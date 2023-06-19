@@ -1,10 +1,14 @@
+//React-Toolkit
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+//Axios
 import axios from "axios";
 
 const initialState = {
   result: null,
   error: null,
   loading: false,
+  selectedProductCode: null,
 };
 
 export const fetchProducts = createAsyncThunk(
@@ -18,7 +22,11 @@ export const fetchProducts = createAsyncThunk(
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedProductCode(state, action) {
+      state.selectedProductCode = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchProducts.pending, (state, action) => {
@@ -28,7 +36,7 @@ const productsSlice = createSlice({
         state.status = false;
 
         if (state.result) {
-          state.result.nextUrl = state.result.nextUrl;
+          state.result.nextUrl = action.payload.result.nextUrl;
           state.result.products = state.result.products.concat(
             action.payload.result.products
           );
@@ -43,4 +51,5 @@ const productsSlice = createSlice({
   },
 });
 
+export const { setSelectedProductCode } = productsSlice.actions;
 export default productsSlice.reducer;

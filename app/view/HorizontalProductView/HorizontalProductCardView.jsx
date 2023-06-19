@@ -4,7 +4,7 @@ import { Card, CardContent } from "@mui/material";
 //React-Slick
 import Slider from "react-slick";
 
-//View
+//Views
 import Content from "./Content";
 
 const HorizontalProductCardView = ({ horizontalProducts }) => {
@@ -30,6 +30,7 @@ const HorizontalProductCardView = ({ horizontalProducts }) => {
                   productPrice={val.price}
                   productCountOfPrices={val.countOfPrices}
                   productFollowCount={val.followCount}
+                  productCode={val.code}
                 />
               );
             })}

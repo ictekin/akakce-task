@@ -1,8 +1,12 @@
 //React
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 //Material-UI
 import { Box, Grid, Typography, CardMedia, Button } from "@mui/material";
+
+//Slicers
+import { setSelectedProductCode } from "../../features/product/productSlicer";
 
 const ProductsView = ({
   productImageUrl,
@@ -10,8 +14,10 @@ const ProductsView = ({
   productPrice,
   productCountOfPrices,
   productFollowCount,
+  productCode,
 }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <Box
@@ -47,6 +53,7 @@ const ProductsView = ({
         <Grid item>
           <Button
             onClick={() => {
+              dispatch(setSelectedProductCode(productCode));
               navigate("/detail");
             }}
           >

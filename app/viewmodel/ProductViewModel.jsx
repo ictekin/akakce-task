@@ -30,7 +30,7 @@ const ProductViewModel = () => {
   useEffect(() => {
     if (!nextUrl) return;
     getMoreProducts(dispatch);
-  }, [dispatch, nextUrl]);
+  }, [dispatch, nextUrl, getMoreProducts]);
 
   return (
     products && (
@@ -39,9 +39,8 @@ const ProductViewModel = () => {
           {data &&
             data?.currentData().map((val) => {
               return (
-                <Grid item xs={6}>
+                <Grid item key={val.code}>
                   <ProductView
-                    key={val.code}
                     productImageUrl={val.imageUrl}
                     productName={val.name}
                     productPrice={val.price}

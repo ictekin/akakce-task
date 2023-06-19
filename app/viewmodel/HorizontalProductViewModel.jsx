@@ -5,11 +5,11 @@ import { useDispatch } from "react-redux";
 //Hooks
 import useProductViewModel from "./hooks/useProductViewModel";
 
-//View
+//Views
 import HorizontalProductCardView from "../view/HorizontalProductView/HorizontalProductCardView";
 
 const HorizontalProductViewModel = () => {
-  const { horizontalProducts, getProducts, nextUrl } = useProductViewModel();
+  const { horizontalProducts, getProducts } = useProductViewModel();
   const dispatch = useDispatch();
 
   useEffect(() => {
